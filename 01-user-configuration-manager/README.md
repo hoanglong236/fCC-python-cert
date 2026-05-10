@@ -20,7 +20,7 @@ python test.py
 
 ## Tech Stack
 - **Language:** Python 3.14.0
-- **Testing:** Unit Testing
+- **Testing:** Unit Testing (AI-assisted with GitHub Copilot)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
