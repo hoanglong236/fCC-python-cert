@@ -1,5 +1,5 @@
 import unittest
-from main import add_setting, update_setting
+from main import add_setting, delete_setting, update_setting
 
 
 class TestAddSetting(unittest.TestCase):
@@ -86,6 +86,38 @@ class TestAddSetting(unittest.TestCase):
         self.assertEqual(result, "Setting '[theme]' updated to '[dark]' successfully!")
         self.assertEqual(user_data.get("theme"), "dark")
         self.assertEqual(user_data.get("font"), "arial")
+
+    def test_delete_setting_removes_existing_key(self):
+        user_data = {"theme": "light"}
+        key = "theme"
+        result = delete_setting(user_data, key)
+
+        self.assertEqual(result, "Setting '[theme]' deleted successfully!")
+        self.assertNotIn("theme", user_data)
+
+    def test_delete_setting_not_delete_if_key_not_exists(self):
+        user_data = {"theme": "light"}
+        key = "font"
+        result = delete_setting(user_data, key)
+
+        self.assertEqual(result, "Setting not found!")
+    
+    def test_delete_setting_normalizes_key_to_lowercase(self):
+        user_data = {"theme": "light"}
+        key = "THEME"
+        result = delete_setting(user_data, key)
+
+        self.assertEqual(result, "Setting '[theme]' deleted successfully!")
+        self.assertNotIn("theme", user_data)
+    
+    def test_delete_setting_does_not_modify_other_settings(self):
+        user_data = {"theme": "light", "font": "arial"}
+        key = "theme"
+        result = delete_setting(user_data, key)
+
+        self.assertEqual(result, "Setting '[theme]' deleted successfully!")
+        self.assertIn("font", user_data)
+
 
 if __name__ == "__main__":
     unittest.main()
