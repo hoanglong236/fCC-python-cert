@@ -1,5 +1,5 @@
 import unittest
-from main import add_setting, delete_setting, update_setting
+from main import add_setting, delete_setting, update_setting, view_settings
 
 
 class TestAddSetting(unittest.TestCase):
@@ -101,7 +101,7 @@ class TestAddSetting(unittest.TestCase):
         result = delete_setting(user_data, key)
 
         self.assertEqual(result, "Setting not found!")
-    
+
     def test_delete_setting_normalizes_key_to_lowercase(self):
         user_data = {"theme": "light"}
         key = "THEME"
@@ -109,7 +109,7 @@ class TestAddSetting(unittest.TestCase):
 
         self.assertEqual(result, "Setting '[theme]' deleted successfully!")
         self.assertNotIn("theme", user_data)
-    
+
     def test_delete_setting_does_not_modify_other_settings(self):
         user_data = {"theme": "light", "font": "arial"}
         key = "theme"
@@ -117,6 +117,42 @@ class TestAddSetting(unittest.TestCase):
 
         self.assertEqual(result, "Setting '[theme]' deleted successfully!")
         self.assertIn("font", user_data)
+
+    def test_view_settings_returns_all_settings(self):
+        user_data = {"theme": "light", "font": "arial"}
+        expected_output = "Current User Settings:\nTheme: light\nFont: arial"
+        result = view_settings(user_data)
+
+        self.assertEqual(result, expected_output)
+
+    def test_view_settings_returns_no_settings_message(self):
+        user_data = {}
+        expected_output = "No settings available."
+        result = view_settings(user_data)
+
+        self.assertEqual(result, expected_output)
+
+    def test_view_settings_does_not_modify_user_data(self):
+        user_data = {"theme": "light", "font": "arial"}
+        _ = view_settings(user_data)
+
+        self.assertEqual(user_data, {"theme": "light", "font": "arial"})
+
+    def test_view_settings_formats_output_correctly(self):
+        user_data = {"theme": "light", "font": "arial"}
+        expected_output = "Current User Settings:\nTheme: light\nFont: arial"
+        result = view_settings(user_data)
+
+        self.assertEqual(result, expected_output)
+
+    def test_view_settings_handles_empty_values(self):
+        user_data = {"theme": "light", "font": "" }
+        expected_output = (
+            "Current User Settings:\nTheme: light\nFont: "
+        )
+        result = view_settings(user_data)
+
+        self.assertEqual(result, expected_output)
 
 
 if __name__ == "__main__":
