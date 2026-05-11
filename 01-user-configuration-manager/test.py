@@ -9,7 +9,7 @@ class TestAddSetting(unittest.TestCase):
         result = add_setting(user_data, setting)
 
         self.assertEqual(
-            result, "Setting '[theme]' added with value '[dark]' successfully!"
+            result, "Setting 'theme' added with value 'dark' successfully!"
         )
         self.assertEqual(user_data.get("theme"), "dark")
 
@@ -19,7 +19,17 @@ class TestAddSetting(unittest.TestCase):
         result = add_setting(user_data, setting)
 
         self.assertEqual(
-            result, "Setting '[theme]' already exists! Cannot add a new setting with this name."
+            result, "Setting 'theme' already exists! Cannot add a new setting with this name."
+        )
+        self.assertEqual(user_data.get("theme"), "light")
+
+    def test_add_setting_ignores_existing_key_case_insensitive(self):
+        user_data = {"theme": "light"}
+        setting = ("THEME", "dark")
+        result = add_setting(user_data, setting)
+
+        self.assertEqual(
+            result, "Setting 'theme' already exists! Cannot add a new setting with this name."
         )
         self.assertEqual(user_data.get("theme"), "light")
 
@@ -29,7 +39,7 @@ class TestAddSetting(unittest.TestCase):
         result = add_setting(user_data, setting)
 
         self.assertEqual(
-            result, "Setting '[theme]' added with value '[dark]' successfully!"
+            result, "Setting 'theme' added with value 'dark' successfully!"
         )
         self.assertEqual(user_data.get("theme"), "dark")
 
@@ -39,7 +49,7 @@ class TestAddSetting(unittest.TestCase):
         result = add_setting(user_data, setting)
 
         self.assertEqual(
-            result, "Setting '[theme]' added with value '[dark]' successfully!"
+            result, "Setting 'theme' added with value 'dark' successfully!"
         )
         self.assertEqual(user_data.get("theme"), "dark")
 
@@ -48,7 +58,7 @@ class TestAddSetting(unittest.TestCase):
         setting = ("theme", "dark")
         result = update_setting(user_data, setting)
 
-        self.assertEqual(result, "Setting '[theme]' updated to '[dark]' successfully!")
+        self.assertEqual(result, "Setting 'theme' updated to 'dark' successfully!")
         self.assertEqual(user_data.get("theme"), "dark")
 
     def test_update_setting_not_update_if_key_not_exists(self):
@@ -57,7 +67,7 @@ class TestAddSetting(unittest.TestCase):
         result = update_setting(user_data, setting)
 
         self.assertEqual(
-            result, "Setting '[font]' does not exist! Cannot update a non-existing setting."
+            result, "Setting 'font' does not exist! Cannot update a non-existing setting."
         )
         self.assertIsNone(user_data.get("font"))
 
@@ -66,7 +76,7 @@ class TestAddSetting(unittest.TestCase):
         setting = ("THEME", "dark")
         result = update_setting(user_data, setting)
 
-        self.assertEqual(result, "Setting '[theme]' updated to '[dark]' successfully!")
+        self.assertEqual(result, "Setting 'theme' updated to 'dark' successfully!")
         self.assertNotIn("THEME", user_data)
         self.assertEqual(user_data.get("theme"), "dark")
 
@@ -75,7 +85,7 @@ class TestAddSetting(unittest.TestCase):
         setting = ("theme", "DARK")
         result = update_setting(user_data, setting)
 
-        self.assertEqual(result, "Setting '[theme]' updated to '[dark]' successfully!")
+        self.assertEqual(result, "Setting 'theme' updated to 'dark' successfully!")
         self.assertEqual(user_data.get("theme"), "dark")
 
     def test_update_setting_does_not_modify_other_settings(self):
@@ -83,7 +93,7 @@ class TestAddSetting(unittest.TestCase):
         setting = ("theme", "dark")
         result = update_setting(user_data, setting)
 
-        self.assertEqual(result, "Setting '[theme]' updated to '[dark]' successfully!")
+        self.assertEqual(result, "Setting 'theme' updated to 'dark' successfully!")
         self.assertEqual(user_data.get("theme"), "dark")
         self.assertEqual(user_data.get("font"), "arial")
 
@@ -92,7 +102,7 @@ class TestAddSetting(unittest.TestCase):
         key = "theme"
         result = delete_setting(user_data, key)
 
-        self.assertEqual(result, "Setting '[theme]' deleted successfully!")
+        self.assertEqual(result, "Setting 'theme' deleted successfully!")
         self.assertNotIn("theme", user_data)
 
     def test_delete_setting_not_delete_if_key_not_exists(self):
@@ -107,7 +117,7 @@ class TestAddSetting(unittest.TestCase):
         key = "THEME"
         result = delete_setting(user_data, key)
 
-        self.assertEqual(result, "Setting '[theme]' deleted successfully!")
+        self.assertEqual(result, "Setting 'theme' deleted successfully!")
         self.assertNotIn("theme", user_data)
 
     def test_delete_setting_does_not_modify_other_settings(self):
@@ -115,12 +125,12 @@ class TestAddSetting(unittest.TestCase):
         key = "theme"
         result = delete_setting(user_data, key)
 
-        self.assertEqual(result, "Setting '[theme]' deleted successfully!")
+        self.assertEqual(result, "Setting 'theme' deleted successfully!")
         self.assertIn("font", user_data)
 
     def test_view_settings_returns_all_settings(self):
         user_data = {"theme": "light", "font": "arial"}
-        expected_output = "Current User Settings:\nTheme: light\nFont: arial"
+        expected_output = "Current User Settings:\nTheme: light\nFont: arial\n"
         result = view_settings(user_data)
 
         self.assertEqual(result, expected_output)
@@ -140,7 +150,7 @@ class TestAddSetting(unittest.TestCase):
 
     def test_view_settings_formats_output_correctly(self):
         user_data = {"theme": "light", "font": "arial"}
-        expected_output = "Current User Settings:\nTheme: light\nFont: arial"
+        expected_output = "Current User Settings:\nTheme: light\nFont: arial\n"
         result = view_settings(user_data)
 
         self.assertEqual(result, expected_output)
@@ -148,7 +158,7 @@ class TestAddSetting(unittest.TestCase):
     def test_view_settings_handles_empty_values(self):
         user_data = {"theme": "light", "font": "" }
         expected_output = (
-            "Current User Settings:\nTheme: light\nFont: "
+            "Current User Settings:\nTheme: light\nFont: \n"
         )
         result = view_settings(user_data)
 
