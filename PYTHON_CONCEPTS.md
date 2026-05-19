@@ -17,6 +17,24 @@
       - [4.1. Core Operations](#41-core-operations)
       - [4.2. Membership and Methods](#42-membership-and-methods)
       - [4.3. The Performance Pitfall: Concatenation](#43-the-performance-pitfall-concatenation)
+    - [5. Common Operations used with Integers and Floats](#5-common-operations-used-with-integers-and-floats)
+      - [5.1. Basic Math Operations](#51-basic-math-operations)
+      - [5.2. Modulo Operator (%)](#52-modulo-operator-)
+      - [5.3. Floor Division (//)](#53-floor-division-)
+      - [5.4. Exponentiation Operator (\*\*)](#54-exponentiation-operator-)
+      - [5.5. `int()` and `float()` Functions](#55-int-and-float-functions)
+      - [5.6. Rounding, Floor, and Ceiling Functions](#56-rounding-floor-and-ceiling-functions)
+      - [5.7. `abs()` and `pow()` Functions](#57-abs-and-pow-functions)
+    - [6. Augmented Assignments](#6-augmented-assignments)
+    - [7. Working with Functions](#7-working-with-functions)
+      - [7.1. Basic Function Structure](#71-basic-function-structure)
+      - [7.2. Common Built-in Functions](#72-common-built-in-functions)
+      - [7.3. Parameters vs. Arguments](#73-parameters-vs-arguments)
+      - [7.4. Types of Arguments](#74-types-of-arguments)
+    - [8. Scope in Python](#8-scope-in-python)
+      - [8.1. The LEGB Rule](#81-the-legb-rule)
+      - [8.2. Reading vs. Modifying Variables](#82-reading-vs-modifying-variables)
+      - [8.3. The `global` and `nonlocal` Keywords](#83-the-global-and-nonlocal-keywords)
 
 
 ## I. Python Basics
@@ -172,3 +190,309 @@ for word in ["a", "b", "c"]:
 words = ["a", "b", "c"]
 s = "".join(words)
 ```
+
+
+### 5. Common Operations used with Integers and Floats
+
+#### 5.1. Basic Math Operations
+
+Standard operators follow the order of operations (PEMDAS: Parentheses, Exponents, Multiplication/Division, Addition/Subtraction).
+
+```python
+# +, -, *: Work as expected.
+# / (True Division): Always returns a Float, even if the result is a whole number.
+print(10 / 2)  # Output: 5.0
+```
+
+#### 5.2. Modulo Operator (%)
+
+Returns the remainder of a division. This is a critical tool in logic building.
+
+```python
+print(10 % 3)  # Output: 1 (Because 3 goes into 10 three times with 1 left over)
+```
+
+**Common Use Case**: Checking if a number is even (`num % 2 == 0`) or odd.
+
+#### 5.3. Floor Division (//)
+
+Divides two numbers and rounds down to the nearest whole number (integer). It truncates or "chops off" the decimal part for positive numbers.
+
+```python
+print(10 // 3)   # Output: 3
+print(-10 // 3)  # Output: -4 (Careful! It rounds down toward negative infinity)
+```
+
+#### 5.4. Exponentiation Operator (**)
+
+Calculates the power of a number.
+
+```python
+print(2 ** 3)  # Output: 8 (2 * 2 * 2)
+```
+
+#### 5.5. `int()` and `float()` Functions
+
+These are used for **Type Casting** (converting one data type to another).
+
+- `int(value)`: Converts a value to an integer. If converting a float, it truncates (chops off) the decimal toward zero
+- `float(value)`: Converts a value to a floating-point number.
+
+```python
+print(int(3.9))    # Output: 3
+print(int("10"))   # Output: 10
+
+print(float(5))      # Output: 5.0
+print(float("3.14")) # Output: 3.14
+```
+
+#### 5.6. Rounding, Floor, and Ceiling Functions
+
+`round(number, ndigits)`: Rounds a number to the nearest integer or specified decimal places.
+
+```python
+print(round(3.14159, 2))  # Output: 3.14
+```
+
+⚠️ **The "Banker's Rounding" Rule**: If a number is exactly halfway between two integers (e.g., `.5`), Python rounds to the nearest **even** number.
+
+```python
+print(round(2.5))  # Output: 2
+print(round(3.5))  # Output: 4
+```
+
+**Why?** This reduces cumulative rounding errors in large financial datasets by averaging rounds up and down equally over time.
+
+**Advanced Rounding (`math` module):**
+Requires importing Python's built-in `math` library.
+- `math.floor(number)`: Always rounds down to the nearest whole number.
+- `math.ceil(number)`: Always rounds up to the nearest whole number.
+
+```python
+import math
+
+print(math.floor(3.9))  # Output: 3
+print(math.ceil(3.1))   # Output: 4
+```
+
+#### 5.7. `abs()` and `pow()` Functions
+
+- `abs(number)`: Returns the absolute value (the positive distance from zero).
+- `pow(base, exp)`: Returns the power of a number (the functional equivalent of `base ** exp`).
+
+```python
+print(abs(-5))    # Output: 5
+print(pow(2, 3))  # Output: 8
+```
+
+---
+**💡 Interview Gotcha: `int()` vs `math.floor()`**
+
+While they yield the same results for positive numbers, they behave differently with negative values:
+
+```python
+print(int(-3.1))         # Output: -3 (Truncates toward zero)
+print(math.floor(-3.1))  # Output: -4 (Rounds down toward negative infinity)
+```
+---
+
+
+### 6. Augmented Assignments
+
+Augmented assignment combines an arithmetic operation with a variable assignment into a single step. It modifies the variable **"in-place"** by applying the operation to its current value and saving the result back to that same variable.
+
+```python
+# Addition assignment
+my_var = 10
+my_var += 5
+print(my_var)  # Output: 15
+
+# Subtraction assignment
+count = 14
+count -= 3
+print(count)  # Output: 11
+
+# Multiplication assignment
+product = 65
+product *= 7
+print(product)  # Output: 455
+
+# Division assignment (always returns a float)
+price = 100
+price /= 4
+print(price)  # Output: 25.0
+
+# Floor Division assignment
+total_pages = 23
+total_pages //= 5
+print(total_pages)  # Output: 4
+
+# Modulo assignment
+bits = 35
+bits %= 2
+print(bits)  # Output: 1
+
+# Exponentiation assignment
+power = 2
+power **= 3
+print(power)  # Output: 8
+```
+
+Python also supports augmented assignments for **Bitwise Operators**, which are used in low-level programming or performance optimization:
+- `&=` (Bitwise AND assignment)
+- `|=` (Bitwise OR assignment)
+- `^=` (Bitwise XOR assignment)
+- `>>=` (Bitwise Right Shift assignment)
+- `<<=` (Bitwise Left Shift assignment)
+
+---
+💡 **Interview Tip: The Missing Increment Operator**
+
+In languages like C++, Java, and JavaScript, you can increment a variable using `x++`. **Python does not support** `x++` or `x--`. To change a value by 1 in Python, you must explicitly use the augmented addition/subtraction operators:
+
+```python
+x = 5
+x += 1  # Correct way to increment (x is now 6)
+```
+---
+
+
+### 7. Working with Functions
+
+#### 7.1. Basic Function Structure
+
+Functions allow you to reuse code and keep your logic modular.
+
+- **Definition**: Use the `def` keyword followed by the function name, parentheses `()`, and a colon.
+- **The `return` Statement**: Explicitly sends a value back to the caller. If a function does not contain a `return` statement, it implicitly returns `None` by default.
+
+```python
+def greet(name):
+    return f"Hello, {name}!"
+
+result = greet("Alice")
+print(result)  # Output: "Hello, Alice!"
+```
+
+#### 7.2. Common Built-in Functions
+
+Python provides a rich library of globally available functions:
+- `type(object)`: Evaluates and returns the exact data type of an object.
+- `print(*objects)`: Outputs data to the system console.
+
+```python
+print(type(10))  # Output: <class 'int'>
+```
+
+#### 7.3. Parameters vs. Arguments
+
+While used interchangeably in casual conversation, these terms have distinct architectural meanings in software development:
+- **Parameters**: The variable placeholders declared inside a function's signature (the definitions on the `def` line).
+- **Arguments**: The real, concrete values supplied to the function when it is executed.
+
+```python
+def multiply(a, b):  # 'a' and 'b' are PARAMETERS
+    return a * b
+
+print(multiply(5, 10))  # 5 and 10 are ARGUMENTS (Output: 50)
+```
+
+#### 7.4. Types of Arguments
+
+Python provides flexible mechanics for executing functions:
+- **Positional Arguments**: Must be passed in the exact sequential order defined by the function parameters.
+- **Keyword Arguments**: Arguments passed by name, allowing you to ignore the sequential order.
+- **Default Parameters**: Allow fallback values directly inside the function signature. If the caller omits an argument, the default value kicks in.
+
+```python
+def division(a, b=1):
+    return a / b
+
+# 1. Positional Arguments (Order determines the result)
+print(division(6, 3))    # Output: 2.0
+print(division(3, 6))    # Output: 0.5
+
+# 2. Default Parameter (Omitting 'b' uses the fallback value of 1)
+print(division(5))       # Output: 5.0
+
+# 3. Keyword Arguments (Explicitly named, so order doesn't matter)
+print(division(b=3, a=6)) # Output: 2.0
+```
+
+---
+💡 **Interview Note: Pass by Object Reference**
+
+Python uses a **Pass by Object Reference** (also called *call-by-sharing*) approach. You are passing an object's reference (memory address), not the actual raw value.
+
+- **Immutable Objects**: Cannot be modified. Any change inside the function creates a new object in memory, leaving the caller's original variable completely untouched.
+- **Mutable Objects**: The function receives a reference. Modifying the object inside the function **mutates the original object**.
+---
+
+
+### 8. Scope in Python
+
+#### 8.1. The LEGB Rule
+
+When you reference a variable name, Python looks for it across four layers of scope. It uses the first match it finds:
+
+- **L - Local**: Variables defined inside the current function.
+- **E - Enclosing**: Variables inside any nested/outer function structures (relevant in closures and inner functions).
+- **G - Global**: Variables defined at the top-most level of the script or module.
+- **B - Built-in**: Keywords and functions pre-loaded by Python (e.g., `len`, `int`, `print`).
+
+#### 8.2. Reading vs. Modifying Variables
+
+- **Reading**: A function can freely read variables from outer scopes (Global or Enclosing) without requiring any special keywords.
+
+- **Modifying**: A function cannot modify an outer variable directly. Attempting to reassign an outer variable inside a function causes Python to create a **new local variable** with that same name, shielding the original variable from changes.
+
+```python
+x = 10  # Global variable
+
+def my_func():
+    x = 5  # Creates a NEW local variable 'x'; does NOT change global 'x'
+    print(f"Local x: {x}")
+
+my_func()               # Output: Local x: 5
+print(f"Global x: {x}") # Output: Global x: 10 (unaffected)
+```
+
+#### 8.3. The `global` and `nonlocal` Keywords
+
+To explicitly modify a variable residing outside the local scope, you must declare your intent before mutating it:
+
+- **`global`**: Informs Python that a variable belongs to the top-level (Global) scope.
+- **`nonlocal`**: Informs Python that a variable inside a nested function belongs to an outer (Enclosing) function's scope.
+
+```python
+# 1. Using the global keyword
+counter = 0
+
+def increment_global():
+    global counter
+    counter += 1
+
+increment_global()
+print(counter)  # Output: 1
+
+# 2. Using the nonlocal keyword (Nested Functions)
+def outer_func():
+    message = "Hello"
+
+    def inner_func():
+        nonlocal message
+        message = "World"  # Modifies the variable in outer_func
+
+    inner_func()
+    print(message)  # Output: World
+
+outer_func()
+```
+
+---
+💡 **Interview Tip: Why Global Variables are an Anti-Pattern**
+
+Excessive use of the `global` keyword is heavily penalized in interviews.
+- **The Problem**: Global state makes code fragile and hard to debug because any function can unexpectedly mutate data from anywhere in the program.
+- **The Solution**: Instead of using `global`, **pass the variable as an argument and explicitly return the updated value**. This keeps your functions isolated, predictable, and clean.
+---
