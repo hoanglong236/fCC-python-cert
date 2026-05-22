@@ -35,6 +35,17 @@
       - [8.1. The LEGB Rule](#81-the-legb-rule)
       - [8.2. Reading vs. Modifying Variables](#82-reading-vs-modifying-variables)
       - [8.3. The `global` and `nonlocal` Keywords](#83-the-global-and-nonlocal-keywords)
+    - [9. Comparison Operators](#9-comparison-operators)
+    - [10. Working with Condition Statements (`if`, `elif` and `else`)](#10-working-with-condition-statements-if-elif-and-else)
+      - [10.1. Nested `if` Statements](#101-nested-if-statements)
+    - [11. Truthy and Falsy Values, and the `bool()` Function](#11-truthy-and-falsy-values-and-the-bool-function)
+      - [11.1. Truthy and Falsy Values](#111-truthy-and-falsy-values)
+      - [11.2. The `bool()` Function](#112-the-bool-function)
+    - [12. Boolean Operators and Short-circuit Evaluation](#12-boolean-operators-and-short-circuit-evaluation)
+      - [12.1. The `and` Operator](#121-the-and-operator)
+      - [12.2. The `or` Operator](#122-the-or-operator)
+      - [12.3. Short-circuit Evaluation](#123-short-circuit-evaluation)
+      - [12.4. The `not` Operator](#124-the-not-operator)
 
 
 ## I. Python Basics
@@ -496,3 +507,176 @@ Excessive use of the `global` keyword is heavily penalized in interviews.
 - **The Problem**: Global state makes code fragile and hard to debug because any function can unexpectedly mutate data from anywhere in the program.
 - **The Solution**: Instead of using `global`, **pass the variable as an argument and explicitly return the updated value**. This keeps your functions isolated, predictable, and clean.
 ---
+
+
+### 9. Comparison Operators
+
+Comparison operators evaluate expressions and return a Boolean value (`True` or `False`).
+- Equal (`==`)
+- Not equal (`!=`)
+- Strictly greater than (`>`)
+- Strictly less than (`<`)
+- Greater than or equal (`>=`)
+- Less than or equal (`<=`)
+
+```python
+print(3 == 4) # Output: False
+print(3 != 4) # Output: True
+print(3 > 4) # Output: False
+print(3 < 4) # Output: True
+print(3 >= 4) # Output: False
+print(3 <= 4) # Output: True
+```
+
+---
+💡 **Interview Note: Equality (`==`) vs. Identity (`is`)**
+
+While they look similar, `==` and `is` serve entirely different structural purposes in Python:
+- **`==` (Value Equality)**: Compares the **data/values** stored inside the objects.
+- **`is` (Reference Identity)**: Compares the **memory addresses (`id()`)** of the objects to see if they are the exact same entity.
+
+```python
+# Demonstrating the difference
+list_a = [1, 2, 3]
+list_b = [1, 2, 3]
+list_c = list_a
+
+print(list_a == list_b)  # Output: True  (They contain the exact same values)
+print(list_a is list_b)  # Output: False (They are stored in different memory locations)
+print(list_a is list_c)  # Output: True  (They point to the exact same memory address)
+```
+
+---
+
+
+### 10. Working with Condition Statements (`if`, `elif` and `else`)
+
+Conditional statements control the execution flow of a program by running specific blocks of code based on whether an expression evaluates to `True` or `False`.
+
+- **`if` Statement**: Evaluates a condition. If the condition is `True`, its nested block of code executes.
+- **`elif` Clause**: Short for "else if". It checks a new condition only if all previous `if` and `elif` conditions evaluated to `False`. If the condition is `True`, its nested block of code executes.
+- **`else` Clause**: Acts as a fallback block. It executes automatically if none of the preceding conditions evaluate to `True`.
+
+```python
+age = 12
+
+if age >= 18:
+    print('You are an adult')
+elif age >= 13:
+    print('You are a teenager')
+else:
+    print('You are a child')  # Output: You are a child
+```
+
+#### 10.1. Nested `if` Statements
+
+You can also use nested `if` statements like this:
+
+```python
+is_citizen = True
+age = 25
+
+if is_citizen:
+    if age >= 18:
+        print('You are eligible to vote') # Output: You are eligible to vote
+else:
+    print('You are not eligible to vote')
+```
+
+
+### 11. Truthy and Falsy Values, and the `bool()` Function
+
+#### 11.1. Truthy and Falsy Values
+
+In Python, every value has an inherent boolean value—a built-in ruleset determining whether it should be treated as `True` or `False` in a logical context.
+- **Truthy Values**: Values that evaluate to `True` in a logical context (e.g., non-zero numbers, non-empty strings).
+- **Falsy Values**: Values that evaluate to `False` in a logical context. Core examples include:
+  - `None`
+  - `False`
+  - Integer `0`
+  - Float `0.0`
+  - Empty strings `""` or `''`
+
+#### 11.2. The `bool()` Function
+
+If you want to check whether a value is truthy or falsy, you can use the built-in `bool()` function. It explicitly converts a value to its boolean equivalent, returning `True` for truthy values and `False` for falsy values.
+
+```python
+# Checking Falsy Values
+print(bool(False))    # Output: False
+print(bool(0))        # Output: False
+print(bool(''))       # Output: False
+
+# Checking Truthy Values
+print(bool(True))     # Output: True
+print(bool(1))        # Output: True
+print(bool('Hello'))  # Output: True
+```
+
+
+### 12. Boolean Operators and Short-circuit Evaluation
+
+Boolean operators allow you to combine multiple expressions to construct complex decision-making logic. Python features three core logical operators: `and`, `or`, and `not`.
+
+#### 12.1. The `and` Operator
+
+Returns the first operand if it is falsy; otherwise, it returns the second operand. Both sides must be truthy for the expression to result in a truthy value.
+
+```python 
+is_citizen = True
+age = 25
+
+print(is_citizen and age)  # Output: 25
+
+# Usage in a conditional statement
+if is_citizen and age >= 18:
+    print('You are eligible to vote')  # Output: You are eligible to vote
+else:
+    print('You are not eligible to vote')
+```
+
+#### 12.2. The `or` Operator
+
+Returns the first operand if it is truthy; otherwise, it returns the second operand. An `or` expression is truthy if at least one operand is truthy.
+
+```python
+age = 19
+is_employed = False
+
+print(age or is_employed)  # Output: 19
+
+# Usage in a conditional statement
+is_student = True
+
+if age < 18 or is_student:
+    print('You are eligible for a student discount')  # Output: You are eligible for a student discount
+else:
+    print('You are not eligible for a student discount')
+```
+
+#### 12.3. Short-circuit Evaluation
+
+The `and` and `or` operators are **short-circuit operators**. Short-circuiting means Python checks values from left to right and stops execution as soon as the final result is guaranteed:
+- For `and`: If the left operand is falsy, Python skips evaluating the right operand because the whole expression is already guaranteed to be `False`.
+- For `or`: If the left operand is truthy, Python skips evaluating the right operand because the whole expression is already guaranteed to be `True`.
+
+#### 12.4. The `not` Operator
+
+Takes a single operand and inverts its boolean value, converting truthy values to `False` and falsy values to `True`. Unlike `and` and `or`, the `not` operator always returns a strict boolean `True` or `False`.
+
+```python
+print(not '')       # Output: True  (empty string is falsy)
+print(not 'Hello')  # Output: False (non-empty string is truthy)
+print(not 0)        # Output: True  (0 is falsy)
+print(not 1)        # Output: False (1 is truthy)
+print(not False)    # Output: True
+print(not True)     # Output: False
+
+# Usage in a conditional statement
+is_admin = False
+
+if not is_admin:
+    print('Access denied for non-administrators.')  # Output: Access denied for non-administrators.
+else:
+    print('Welcome, Administrator!')
+```
