@@ -1,58 +1,58 @@
-# Python Core Concepts & Study Journal
+# Topic 1: Python Basics
 
-**Summary of Topics:**
+**Summary of content:**
 
-- [Python Core Concepts \& Study Journal](#python-core-concepts--study-journal)
-  - [I. Python Basics](#i-python-basics)
-    - [1. Variables](#1-variables)
-      - [Declaring Variables](#declaring-variables)
-      - [Naming Conventions \& Constraints](#naming-conventions--constraints)
-    - [2. Comments](#2-comments)
-      - [Single Line Comments](#single-line-comments)
-      - [Multi-line "Comments" (Docstrings)](#multi-line-comments-docstrings)
-    - [3. Data Types and Mutability](#3-data-types-and-mutability)
-      - [3.1. Immutable Types (Cannot be changed)](#31-immutable-types-cannot-be-changed)
-      - [3.2. Mutable Types (Can be changed)](#32-mutable-types-can-be-changed)
-    - [4. Working with Strings](#4-working-with-strings)
-      - [4.1. Core Operations](#41-core-operations)
-      - [4.2. Membership and Methods](#42-membership-and-methods)
-      - [4.3. The Performance Pitfall: Concatenation](#43-the-performance-pitfall-concatenation)
-    - [5. Common Operations used with Integers and Floats](#5-common-operations-used-with-integers-and-floats)
-      - [5.1. Basic Math Operations](#51-basic-math-operations)
-      - [5.2. Modulo Operator (%)](#52-modulo-operator-)
-      - [5.3. Floor Division (//)](#53-floor-division-)
-      - [5.4. Exponentiation Operator (\*\*)](#54-exponentiation-operator-)
-      - [5.5. `int()` and `float()` Functions](#55-int-and-float-functions)
-      - [5.6. Rounding, Floor, and Ceiling Functions](#56-rounding-floor-and-ceiling-functions)
-      - [5.7. `abs()` and `pow()` Functions](#57-abs-and-pow-functions)
-    - [6. Augmented Assignments](#6-augmented-assignments)
-    - [7. Working with Functions](#7-working-with-functions)
-      - [7.1. Basic Function Structure](#71-basic-function-structure)
-      - [7.2. Common Built-in Functions](#72-common-built-in-functions)
-      - [7.3. Parameters vs. Arguments](#73-parameters-vs-arguments)
-      - [7.4. Types of Arguments](#74-types-of-arguments)
-    - [8. Scope in Python](#8-scope-in-python)
-      - [8.1. The LEGB Rule](#81-the-legb-rule)
-      - [8.2. Reading vs. Modifying Variables](#82-reading-vs-modifying-variables)
-      - [8.3. The `global` and `nonlocal` Keywords](#83-the-global-and-nonlocal-keywords)
-    - [9. Comparison Operators](#9-comparison-operators)
-    - [10. Working with Condition Statements (`if`, `elif` and `else`)](#10-working-with-condition-statements-if-elif-and-else)
-      - [10.1. Nested `if` Statements](#101-nested-if-statements)
-    - [11. Truthy and Falsy Values, and the `bool()` Function](#11-truthy-and-falsy-values-and-the-bool-function)
-      - [11.1. Truthy and Falsy Values](#111-truthy-and-falsy-values)
-      - [11.2. The `bool()` Function](#112-the-bool-function)
-    - [12. Boolean Operators and Short-circuit Evaluation](#12-boolean-operators-and-short-circuit-evaluation)
-      - [12.1. The `and` Operator](#121-the-and-operator)
-      - [12.2. The `or` Operator](#122-the-or-operator)
-      - [12.3. Short-circuit Evaluation](#123-short-circuit-evaluation)
-      - [12.4. The `not` Operator](#124-the-not-operator)
+- [Topic 1: Python Basics](#topic-1-python-basics)
+  - [1. Variables](#1-variables)
+    - [Declaring Variables](#declaring-variables)
+    - [Naming Conventions \& Constraints](#naming-conventions--constraints)
+  - [2. Comments](#2-comments)
+    - [Single Line Comments](#single-line-comments)
+    - [Multi-line "Comments" (Docstrings)](#multi-line-comments-docstrings)
+  - [3. Data Types and Mutability](#3-data-types-and-mutability)
+    - [3.1. Immutable Types (Cannot be changed)](#31-immutable-types-cannot-be-changed)
+    - [3.2. Mutable Types (Can be changed)](#32-mutable-types-can-be-changed)
+  - [4. Working with Strings](#4-working-with-strings)
+    - [4.1. Core Operations](#41-core-operations)
+    - [4.2. Membership and Methods](#42-membership-and-methods)
+    - [4.3. The Performance Pitfall: Concatenation](#43-the-performance-pitfall-concatenation)
+  - [5. Common Operations used with Integers and Floats](#5-common-operations-used-with-integers-and-floats)
+    - [5.1. Basic Math Operations](#51-basic-math-operations)
+    - [5.2. Modulo Operator (%)](#52-modulo-operator-)
+    - [5.3. Floor Division (//)](#53-floor-division-)
+    - [5.4. Exponentiation Operator (\*\*)](#54-exponentiation-operator-)
+    - [5.5. `int()` and `float()` Functions](#55-int-and-float-functions)
+    - [5.6. Rounding, Floor, and Ceiling Functions](#56-rounding-floor-and-ceiling-functions)
+    - [5.7. `abs()` and `pow()` Functions](#57-abs-and-pow-functions)
+  - [6. Augmented Assignments](#6-augmented-assignments)
+  - [7. Working with Functions](#7-working-with-functions)
+    - [7.1. Basic Function Structure](#71-basic-function-structure)
+    - [7.2. Common Built-in Functions](#72-common-built-in-functions)
+    - [7.3. Parameters vs. Arguments](#73-parameters-vs-arguments)
+    - [7.4. Types of Arguments](#74-types-of-arguments)
+  - [8. Scope in Python](#8-scope-in-python)
+    - [8.1. The LEGB Rule](#81-the-legb-rule)
+    - [8.2. Reading vs. Modifying Variables](#82-reading-vs-modifying-variables)
+    - [8.3. The `global` and `nonlocal` Keywords](#83-the-global-and-nonlocal-keywords)
+  - [9. Comparison Operators](#9-comparison-operators)
+  - [10. Working with Condition Statements (`if`, `elif` and `else`)](#10-working-with-condition-statements-if-elif-and-else)
+    - [10.1. Nested `if` Statements](#101-nested-if-statements)
+  - [11. Truthy and Falsy Values, and the `bool()` Function](#11-truthy-and-falsy-values-and-the-bool-function)
+    - [11.1. Truthy and Falsy Values](#111-truthy-and-falsy-values)
+    - [11.2. The `bool()` Function](#112-the-bool-function)
+  - [12. Boolean Operators and Short-circuit Evaluation](#12-boolean-operators-and-short-circuit-evaluation)
+    - [12.1. The `and` Operator](#121-the-and-operator)
+    - [12.2. The `or` Operator](#122-the-or-operator)
+    - [12.3. Short-circuit Evaluation](#123-short-circuit-evaluation)
+    - [12.4. The `not` Operator](#124-the-not-operator)
 
 
-## I. Python Basics
+---
 
-### 1. Variables
 
-#### Declaring Variables
+## 1. Variables
+
+### Declaring Variables
 
 To declare a variable, use the assignment operator (`=`) to bind a value to a name. Python uses **Dynamic Typing**, meaning variables are not tied to a specific data type and can be reassigned to different types during execution.
 
@@ -60,7 +60,7 @@ To declare a variable, use the assignment operator (`=`) to bind a value to a na
 full_name = "Python Variables"
 ```
 
-#### Naming Conventions & Constraints
+### Naming Conventions & Constraints
 
 Python follows specific rules for identifiers. Violating these will trigger a `SyntaxError`.
 
@@ -73,16 +73,16 @@ Python follows specific rules for identifiers. Violating these will trigger a `S
 | Pythonic Style     | Use **snake_case** (lowercase words separated by underscores) to follow PEP 8 guidelines. |
 
 
-### 2. Comments
+## 2. Comments
 
-#### Single Line Comments
+### Single Line Comments
 
 Created using the hash symbol (`#`). Python ignores everything from the # to the end of the line.
 ```python
 # Set the user's initial score to zero
 ```
 
-#### Multi-line "Comments" (Docstrings)
+### Multi-line "Comments" (Docstrings)
 
 Python doesn’t have a specific syntax for multi-line comments. Instead, triple-quoted strings (`"""` or `'''`) are used.
 
@@ -101,22 +101,23 @@ multi-line comment.
 ```
 
 
-### 3. Data Types and Mutability
+## 3. Data Types and Mutability
 
-#### 3.1. Immutable Types (Cannot be changed)
+### 3.1. Immutable Types (Cannot be changed)
 If you modify an immutable object, Python creates a new object in memory with the new value.
 - `int` / `float` / `complex`: Numeric values (e.g., `5`, `3.14`).
 - `str`: Strings (e.g., `'Hello'`).
 - `bool`: Boolean values (`True` or `False`).
 - `tuple`: An ordered, unchangeable collection (e.g., `(1, 2, 3)`).
 
-#### 3.2. Mutable Types (Can be changed)
+### 3.2. Mutable Types (Can be changed)
 These objects can be modified **"in-place"** without creating a new object in memory.
 - `list`: An ordered, changeable collection (e.g., `[1, 2, 3]`).
 - `dict`: A collection of key-value pairs (e.g., `{'name': 'John'}`).
 - `set`: An unordered collection of unique items (e.g., `{2, 1, 3}`).
 
 ---
+
 💡 **Interview Insight: Tuples vs. Lists**
 
 **Question**: If Lists and Tuples both store collections, why use Tuples?
@@ -124,12 +125,13 @@ These objects can be modified **"in-place"** without creating a new object in me
 **Answer**:
 - **Immutability (Safety)**: Tuples are **"read-only."** This prevents accidental data modification and side effects.
 - **Performance (Efficiency)**: Tuples are **statically allocated**. Because their size is fixed, Python allocates the exact memory needed. In contrast, Lists are dynamically resized and require a "memory buffer" (over-allocation) to handle growth, making them heavier and slower to create than tuples.
+
 ---
 
 
-### 4. Working with Strings
+## 4. Working with Strings
 
-#### 4.1. Core Operations
+### 4.1. Core Operations
 
 **Length (`len()`)**: Returns the total count of characters in a string.
 ```python
@@ -172,7 +174,7 @@ val = 2.1234
 print(f"Value: {val:.2f}") # Output: "Value: 2.12"
 ```
 
-#### 4.2. Membership and Methods
+### 4.2. Membership and Methods
 
 **The `in` Operator**: Returns True if a substring exists within a string.
 ```python
@@ -185,7 +187,32 @@ is_found = "Py" in "Python"  # is_found = True
 - `.split(sep)`: Splits the string into a list based on the separator (sep). If sep is not provided, it splits by any whitespace.
 - `.join(iterable)`: Joins elements of a list (or other iterable) into a single string. This is the standard way to concatenate multiple strings efficiently.
 
-#### 4.3. The Performance Pitfall: Concatenation
+---
+
+💡 **Interview Note — `.split()` vs `.split(" ")`: What is the hidden behavior?**
+
+**Short Answer:** `.split()` treats *any consecutive run* of mixed whitespace characters (spaces, tabs, newlines) as a single delimiter and automatically strips leading/trailing padding. `.split(" ")` matches *every single space character literally*, which can leave tabs/newlines in your data and fill your resulting list with empty strings (`""`).
+
+**Technical Explanation:** When no separator is passed, Python shifts into an optimized white-space parsing mode. It evaluates all consecutive sequences of spaces (` `), tabs (`\t`), newlines (`\n`), and carriage returns (`\r`) as a single, unified block boundary.
+
+```python
+# A input string containing multiple spaces, tabs, and newlines
+text = "   Python    is\t\tfun\n\n"
+
+# 1. DEFAULT BEHAVIOR (Bypasses interpreter overhead, strips, and groups)
+print(text.split())
+# Output: ['Python', 'is', 'fun']
+
+# 2. LITERAL CHARACTER SPLIT (Matches exactly one space at a time)
+print(text.split(" "))
+# Output: ['', '', '', 'Python', '', '', '', 'is\t\tfun\n\n']
+```
+
+⚠️ **The Advantage in Data Sanitization:** When cleaning dirty text datasets or parsing string arrays in algorithmic interviews, always rely on `.split()`. It runs in $O(n)$ time while saving you from writing a secondary loop to filter out unwanted empty strings or strip hidden trailing escape characters.
+
+---
+
+### 4.3. The Performance Pitfall: Concatenation
 
 Because strings are immutable, using the `+` operator in a loop forces Python to create a new object and copy all existing data during every iteration. This leads to $O(n^2)$ time complexity.
 
@@ -203,9 +230,9 @@ s = "".join(words)
 ```
 
 
-### 5. Common Operations used with Integers and Floats
+## 5. Common Operations used with Integers and Floats
 
-#### 5.1. Basic Math Operations
+### 5.1. Basic Math Operations
 
 Standard operators follow the order of operations (PEMDAS: Parentheses, Exponents, Multiplication/Division, Addition/Subtraction).
 
@@ -215,7 +242,7 @@ Standard operators follow the order of operations (PEMDAS: Parentheses, Exponent
 print(10 / 2)  # Output: 5.0
 ```
 
-#### 5.2. Modulo Operator (%)
+### 5.2. Modulo Operator (%)
 
 Returns the remainder of a division. This is a critical tool in logic building.
 
@@ -225,7 +252,7 @@ print(10 % 3)  # Output: 1 (Because 3 goes into 10 three times with 1 left over)
 
 **Common Use Case**: Checking if a number is even (`num % 2 == 0`) or odd.
 
-#### 5.3. Floor Division (//)
+### 5.3. Floor Division (//)
 
 Divides two numbers and rounds down to the nearest whole number (integer). It truncates or "chops off" the decimal part for positive numbers.
 
@@ -234,7 +261,7 @@ print(10 // 3)   # Output: 3
 print(-10 // 3)  # Output: -4 (Careful! It rounds down toward negative infinity)
 ```
 
-#### 5.4. Exponentiation Operator (**)
+### 5.4. Exponentiation Operator (**)
 
 Calculates the power of a number.
 
@@ -242,7 +269,7 @@ Calculates the power of a number.
 print(2 ** 3)  # Output: 8 (2 * 2 * 2)
 ```
 
-#### 5.5. `int()` and `float()` Functions
+### 5.5. `int()` and `float()` Functions
 
 These are used for **Type Casting** (converting one data type to another).
 
@@ -257,7 +284,7 @@ print(float(5))      # Output: 5.0
 print(float("3.14")) # Output: 3.14
 ```
 
-#### 5.6. Rounding, Floor, and Ceiling Functions
+### 5.6. Rounding, Floor, and Ceiling Functions
 
 `round(number, ndigits)`: Rounds a number to the nearest integer or specified decimal places.
 
@@ -286,7 +313,7 @@ print(math.floor(3.9))  # Output: 3
 print(math.ceil(3.1))   # Output: 4
 ```
 
-#### 5.7. `abs()` and `pow()` Functions
+### 5.7. `abs()` and `pow()` Functions
 
 - `abs(number)`: Returns the absolute value (the positive distance from zero).
 - `pow(base, exp)`: Returns the power of a number (the functional equivalent of `base ** exp`).
@@ -297,6 +324,7 @@ print(pow(2, 3))  # Output: 8
 ```
 
 ---
+
 **💡 Interview Gotcha: `int()` vs `math.floor()`**
 
 While they yield the same results for positive numbers, they behave differently with negative values:
@@ -305,10 +333,11 @@ While they yield the same results for positive numbers, they behave differently 
 print(int(-3.1))         # Output: -3 (Truncates toward zero)
 print(math.floor(-3.1))  # Output: -4 (Rounds down toward negative infinity)
 ```
+
 ---
 
 
-### 6. Augmented Assignments
+## 6. Augmented Assignments
 
 Augmented assignment combines an arithmetic operation with a variable assignment into a single step. It modifies the variable **"in-place"** by applying the operation to its current value and saving the result back to that same variable.
 
@@ -357,6 +386,7 @@ Python also supports augmented assignments for **Bitwise Operators**, which are 
 - `<<=` (Bitwise Left Shift assignment)
 
 ---
+
 💡 **Interview Tip: The Missing Increment Operator**
 
 In languages like C++, Java, and JavaScript, you can increment a variable using `x++`. **Python does not support** `x++` or `x--`. To change a value by 1 in Python, you must explicitly use the augmented addition/subtraction operators:
@@ -365,12 +395,13 @@ In languages like C++, Java, and JavaScript, you can increment a variable using 
 x = 5
 x += 1  # Correct way to increment (x is now 6)
 ```
+
 ---
 
 
-### 7. Working with Functions
+## 7. Working with Functions
 
-#### 7.1. Basic Function Structure
+### 7.1. Basic Function Structure
 
 Functions allow you to reuse code and keep your logic modular.
 
@@ -385,7 +416,7 @@ result = greet("Alice")
 print(result)  # Output: "Hello, Alice!"
 ```
 
-#### 7.2. Common Built-in Functions
+### 7.2. Common Built-in Functions
 
 Python provides a rich library of globally available functions:
 - `type(object)`: Evaluates and returns the exact data type of an object.
@@ -395,7 +426,7 @@ Python provides a rich library of globally available functions:
 print(type(10))  # Output: <class 'int'>
 ```
 
-#### 7.3. Parameters vs. Arguments
+### 7.3. Parameters vs. Arguments
 
 While used interchangeably in casual conversation, these terms have distinct architectural meanings in software development:
 - **Parameters**: The variable placeholders declared inside a function's signature (the definitions on the `def` line).
@@ -408,7 +439,7 @@ def multiply(a, b):  # 'a' and 'b' are PARAMETERS
 print(multiply(5, 10))  # 5 and 10 are ARGUMENTS (Output: 50)
 ```
 
-#### 7.4. Types of Arguments
+### 7.4. Types of Arguments
 
 Python provides flexible mechanics for executing functions:
 - **Positional Arguments**: Must be passed in the exact sequential order defined by the function parameters.
@@ -431,18 +462,20 @@ print(division(b=3, a=6)) # Output: 2.0
 ```
 
 ---
+
 💡 **Interview Note: Pass by Object Reference**
 
 Python uses a **Pass by Object Reference** (also called *call-by-sharing*) approach. You are passing an object's reference (memory address), not the actual raw value.
 
 - **Immutable Objects**: Cannot be modified. Any change inside the function creates a new object in memory, leaving the caller's original variable completely untouched.
 - **Mutable Objects**: The function receives a reference. Modifying the object inside the function **mutates the original object**.
+
 ---
 
 
-### 8. Scope in Python
+## 8. Scope in Python
 
-#### 8.1. The LEGB Rule
+### 8.1. The LEGB Rule
 
 When you reference a variable name, Python looks for it across four layers of scope. It uses the first match it finds:
 
@@ -451,7 +484,7 @@ When you reference a variable name, Python looks for it across four layers of sc
 - **G - Global**: Variables defined at the top-most level of the script or module.
 - **B - Built-in**: Keywords and functions pre-loaded by Python (e.g., `len`, `int`, `print`).
 
-#### 8.2. Reading vs. Modifying Variables
+### 8.2. Reading vs. Modifying Variables
 
 - **Reading**: A function can freely read variables from outer scopes (Global or Enclosing) without requiring any special keywords.
 
@@ -468,7 +501,7 @@ my_func()               # Output: Local x: 5
 print(f"Global x: {x}") # Output: Global x: 10 (unaffected)
 ```
 
-#### 8.3. The `global` and `nonlocal` Keywords
+### 8.3. The `global` and `nonlocal` Keywords
 
 To explicitly modify a variable residing outside the local scope, you must declare your intent before mutating it:
 
@@ -501,15 +534,17 @@ outer_func()
 ```
 
 ---
+
 💡 **Interview Tip: Why Global Variables are an Anti-Pattern**
 
 Excessive use of the `global` keyword is heavily penalized in interviews.
 - **The Problem**: Global state makes code fragile and hard to debug because any function can unexpectedly mutate data from anywhere in the program.
 - **The Solution**: Instead of using `global`, **pass the variable as an argument and explicitly return the updated value**. This keeps your functions isolated, predictable, and clean.
+
 ---
 
 
-### 9. Comparison Operators
+## 9. Comparison Operators
 
 Comparison operators evaluate expressions and return a Boolean value (`True` or `False`).
 - Equal (`==`)
@@ -529,6 +564,7 @@ print(3 <= 4) # Output: True
 ```
 
 ---
+
 💡 **Interview Note: Equality (`==`) vs. Identity (`is`)**
 
 While they look similar, `==` and `is` serve entirely different structural purposes in Python:
@@ -549,7 +585,7 @@ print(list_a is list_c)  # Output: True  (They point to the exact same memory ad
 ---
 
 
-### 10. Working with Condition Statements (`if`, `elif` and `else`)
+## 10. Working with Condition Statements (`if`, `elif` and `else`)
 
 Conditional statements control the execution flow of a program by running specific blocks of code based on whether an expression evaluates to `True` or `False`.
 
@@ -568,7 +604,7 @@ else:
     print('You are a child')  # Output: You are a child
 ```
 
-#### 10.1. Nested `if` Statements
+### 10.1. Nested `if` Statements
 
 You can also use nested `if` statements like this:
 
@@ -584,9 +620,9 @@ else:
 ```
 
 
-### 11. Truthy and Falsy Values, and the `bool()` Function
+## 11. Truthy and Falsy Values, and the `bool()` Function
 
-#### 11.1. Truthy and Falsy Values
+### 11.1. Truthy and Falsy Values
 
 In Python, every value has an inherent boolean value—a built-in ruleset determining whether it should be treated as `True` or `False` in a logical context.
 - **Truthy Values**: Values that evaluate to `True` in a logical context (e.g., non-zero numbers, non-empty strings).
@@ -597,7 +633,7 @@ In Python, every value has an inherent boolean value—a built-in ruleset determ
   - Float `0.0`
   - Empty strings `""` or `''`
 
-#### 11.2. The `bool()` Function
+### 11.2. The `bool()` Function
 
 If you want to check whether a value is truthy or falsy, you can use the built-in `bool()` function. It explicitly converts a value to its boolean equivalent, returning `True` for truthy values and `False` for falsy values.
 
@@ -614,11 +650,11 @@ print(bool('Hello'))  # Output: True
 ```
 
 
-### 12. Boolean Operators and Short-circuit Evaluation
+## 12. Boolean Operators and Short-circuit Evaluation
 
 Boolean operators allow you to combine multiple expressions to construct complex decision-making logic. Python features three core logical operators: `and`, `or`, and `not`.
 
-#### 12.1. The `and` Operator
+### 12.1. The `and` Operator
 
 Returns the first operand if it is falsy; otherwise, it returns the second operand. Both sides must be truthy for the expression to result in a truthy value.
 
@@ -635,7 +671,7 @@ else:
     print('You are not eligible to vote')
 ```
 
-#### 12.2. The `or` Operator
+### 12.2. The `or` Operator
 
 Returns the first operand if it is truthy; otherwise, it returns the second operand. An `or` expression is truthy if at least one operand is truthy.
 
@@ -654,13 +690,13 @@ else:
     print('You are not eligible for a student discount')
 ```
 
-#### 12.3. Short-circuit Evaluation
+### 12.3. Short-circuit Evaluation
 
 The `and` and `or` operators are **short-circuit operators**. Short-circuiting means Python checks values from left to right and stops execution as soon as the final result is guaranteed:
 - For `and`: If the left operand is falsy, Python skips evaluating the right operand because the whole expression is already guaranteed to be `False`.
 - For `or`: If the left operand is truthy, Python skips evaluating the right operand because the whole expression is already guaranteed to be `True`.
 
-#### 12.4. The `not` Operator
+### 12.4. The `not` Operator
 
 Takes a single operand and inverts its boolean value, converting truthy values to `False` and falsy values to `True`. Unlike `and` and `or`, the `not` operator always returns a strict boolean `True` or `False`.
 

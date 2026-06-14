@@ -5,13 +5,18 @@ Welcome to my repository for the **Python Certification** from freeCodeCamp. Thi
 ---
 
 ## 📑 Study Notes
+
 I am documenting my learning to track key concepts and performance best practices.
 
-* [**Python Core Concepts**](./PYTHON_CONCEPTS.md)
+| Topic | Core Concepts Covered | Status |
+| :--- | :--- | :--- |
+| [**01 - Python Basics**](./docs/01_PYTHON_BASICS.md) | Fundamental syntax, standard data types, variables, operations, and functions. | ✅ Completed |
+| [**02 - Loops and Sequences**](./docs/02_LOOPS_AND_SEQUENCES.md) | Ordered sequence types (Lists, Tuples), loop structures, and structural complexity analysis. | ⏳ In Progress |
 
 ---
 
 ## 🛠️ Certification Projects
+
 This repository houses the source code for the required projects:
 1. [x] [**User Configuration Manager**](./01-user-configuration-manager/README.md)
 2. [ ] **Project 2**: *Coming soon...*
@@ -22,8 +27,10 @@ This repository houses the source code for the required projects:
 ---
 
 ## 🚀 Goals
+
 - [x] Master Python Fundamentals
 - [ ] Complete all five certification projects
 
 ---
+
 *Follow my journey as I build and learn!*
